@@ -9,6 +9,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import WebView, {WebViewProps} from 'react-native-webview';
+import NetInfo from '@react-native-community/netinfo';
 
 // const {height} = Dimensions.get('window');
 
@@ -24,6 +25,18 @@ const WebViewWithCustomRefresh = ({uri}: WebViewWithCustomRefreshProps) => {
   const scrollY = useRef(new Animated.Value(0)).current;
   const pullThreshold = 80; // 触发刷新的下拉距离
   const debounceTimer = useRef<NodeJS.Timeout | null>(null); // 防抖计时器
+
+  useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener(state => {
+      // 网络状态变化时，发送消息给 WebView
+      if (webViewRef.current) {
+        webViewRef.current.postMessage(
+          state.isConnected ? 'webViewOnLine:true' : 'webViewOnLine:false',
+        );
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
   // 禁用网页原生下拉刷新的脚本
   const disablePullToRefreshScript = `
@@ -50,6 +63,19 @@ const WebViewWithCustomRefresh = ({uri}: WebViewWithCustomRefreshProps) => {
         isAtTop: window.scrollY === 0
       }));
     }, 500);
+
+    // 监听来自 Native 的消息
+    window.addEventListener('message', (event) => {
+      const isOnline = event.data === 'webViewOnLine:true';
+      // 更新 navigator.onLine
+      Object.defineProperty(navigator, 'onLine', {
+        value: isOnline,
+        configurable: false,
+        writable: false
+      });
+      // 触发在线/离线事件
+      window.dispatchEvent(new Event(isOnline ? 'online' : 'offline'));
+    });
   `;
 
   // 处理下拉手势
