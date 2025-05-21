@@ -118,8 +118,23 @@ android {
 }
 
 dependencies {
+    implementation platform("com.mpaas.android:$mpaas_artifact:$mpaas_baseline")
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+    implementation 'com.mpaas.android:antui'
+    implementation 'com.mpaas.android:essential'
+    implementation 'com.mpaas.android:framework'
+    implementation 'com.mpaas.android:mpaas-webcore'
+    implementation 'com.mpaas.android:media'
+    implementation 'com.mpaas.android:mriver-basic'
+    implementation 'com.mpaas.android:nebula'
+    implementation 'com.mpaas.android:scan'
+    implementation 'com.mpaas.android:storage'
+    implementation 'com.mpaas.android:tinyapp'
+    implementation 'com.mpaas.android:tinyapp-map'
+    implementation 'com.mpaas.android:tinyapp-media'
+    implementation 'com.mpaas.android:tinyapp-scan'
+    implementation 'com.mpaas.android:tinyapp-video'
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
