@@ -1,6 +1,23 @@
-pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
+pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin")
+    repositories {
+        mavenCentral()
+        maven {
+            url 'https://mvn.cloud.alipay.com/nexus/content/repositories/open/'
+            name 'alipay'
+        }
+    }
+}
 plugins { id("com.facebook.react.settings") }
 extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
 rootProject.name = 'RNDemo79'
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+        maven {
+            url 'https://mvn.cloud.alipay.com/nexus/content/repositories/open/'
+            name 'alipay'
+        }
+    }
+}
