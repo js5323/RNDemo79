@@ -5,6 +5,13 @@ pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin")
             url 'https://mvn.cloud.alipay.com/nexus/content/repositories/open/'
             name 'alipay'
         }
+        maven {
+            credentials {
+                username "626668353c6b5273a0ce984d"
+                password "t[4AU)JOBzXN"
+            }
+            url "https://packages.aliyun.com/63dc774a9dee9309492b993a/maven/repo-jpkdy/"
+        }
     }
 }
 plugins { id("com.facebook.react.settings") }
@@ -18,6 +25,13 @@ dependencyResolutionManagement {
         maven {
             url 'https://mvn.cloud.alipay.com/nexus/content/repositories/open/'
             name 'alipay'
+        }
+        maven {
+            credentials {
+                username "626668353c6b5273a0ce984d"
+                password "t[4AU)JOBzXN"
+            }
+            url "https://packages.aliyun.com/63dc774a9dee9309492b993a/maven/repo-jpkdy/"
         }
     }
 }

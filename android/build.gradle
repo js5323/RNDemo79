@@ -11,7 +11,6 @@ buildscript {
     }
     repositories {
         mavenLocal()
-        mavenCentral()
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
@@ -24,6 +23,14 @@ buildscript {
             }
             url "https://mvn.cloud.alipay.com/nexus/content/repositories/releases/"
         }
+        maven {
+            credentials {
+                username "626668353c6b5273a0ce984d"
+                password "t[4AU)JOBzXN"
+            }
+            url "https://packages.aliyun.com/63dc774a9dee9309492b993a/maven/repo-jpkdy/"
+        }
+        mavenCentral()
         google()
     }
     dependencies {
@@ -34,13 +41,16 @@ buildscript {
     }
 }
 
+configurations {
+  all*.exclude group:'com.android.support', module: 'support-compat'
+}
+
 allprojects {
     repositories {
         flatDir {
             dirs 'libs'
         }
         mavenLocal()
-        mavenCentral()
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
@@ -53,7 +63,15 @@ allprojects {
             url "https://mvn.cloud.alipay.com/nexus/content/repositories/releases/"
         }
         maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven {
+            credentials {
+                username "626668353c6b5273a0ce984d"
+                password "t[4AU)JOBzXN"
+            }
+            url "https://packages.aliyun.com/63dc774a9dee9309492b993a/maven/repo-jpkdy/"
+        }
         google()
+        mavenCentral()
     }
 }
 
