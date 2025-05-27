@@ -12,8 +12,8 @@ import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.react.soloader.OpenSourceMergedSoMapping
 import com.facebook.soloader.SoLoader
-import com.mpaas.core.MP
-import com.mpaas.core.MPInitParam
+import com.mpaas.android.mPaaS
+import com.mpaas.mriver.api.init.MriverInitParam
 
 
 class MainApplication : Application(), ReactApplication {
@@ -45,9 +45,31 @@ class MainApplication : Application(), ReactApplication {
           load()
       }
 
-      MP.init(
-          this,
-          MPInitParam.obtain().setCallback { Log.d("TAG", "mPaaS Init finish") }
-      )
+//      MP.init(
+//          this,
+//          MPInitParam.obtain().setCallback { Log.d("TAG", "mPaaS Init finish") }
+//      )
+
+      //mPaas 初始化
+      mPaaS(this){
+//          mriver {
+//              isAutoInitMriver = true
+//              mriverInitCallback = object : MriverInitParam.MriverInitCallback {
+//                  override fun onInit() {
+//                      if (com.alibaba.ariver.kernel.common.utils.ProcessUtils.isMainProcess()) {
+//                          // 小程序相关配置，比如自定义jsapi，titlebar等
+//                          TODO("小程序相关配置，比如自定义jsapi，titlebar等")
+//                      }
+//                  }
+//                  override fun onError(p0: Exception?) {
+//                      TODO("Not yet implemented")
+//                  }
+//              }
+//          }
+          callback {
+              //DO something
+              Log.i("Framework","mPaaS 初始化完成")
+          }
+      }
   }
 }
