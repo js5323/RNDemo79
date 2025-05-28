@@ -97,3 +97,5 @@ To learn more about React Native, take a look at the following resources:
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
 
 https://github.com/reactwg/react-native-new-architecture/blob/main/docs/turbo-modules.md
+
+添加模块后需要删了 node_modules 和生成的文件，重新启动
