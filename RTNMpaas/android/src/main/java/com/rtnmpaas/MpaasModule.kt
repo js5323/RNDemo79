@@ -2,15 +2,10 @@ package com.rtnmpaas
 
 import com.facebook.react.bridge.*
 import com.facebook.react.bridge.ReactApplicationContext
-import com.rtnmpaas.NativeRTNMpaasSpec
 
-class MpaasScanModule(reactContext: ReactApplicationContext) : NativeRTNMpaasSpec(reactContext) {
+class MpaasModule(reactContext: ReactApplicationContext) : NativeRTNMpaasSpec(reactContext) {
 
   override fun getName() = NAME
-
-  companion object {
-    const val NAME = "RTNMpaasScan"
-  }
 
   // 扫描状态
   private var isScanning: Boolean = false
@@ -74,4 +69,9 @@ class MpaasScanModule(reactContext: ReactApplicationContext) : NativeRTNMpaasSpe
   override fun getConstants(): MutableMap<String, Any>? = mutableMapOf(
     "SUPPORTED_TYPES" to listOf("qrCode", "barcode", "image")
   )
+
+
+  companion object {
+    const val NAME = "RTNMpaas"
+  }
 }

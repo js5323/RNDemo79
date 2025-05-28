@@ -9,6 +9,8 @@ class CalculatorModule(reactContext: ReactApplicationContext) : NativeRTNCalcula
   override fun getName() = NAME
 
   override fun add(a: Double, b: Double, promise: Promise) {
+    Thread.sleep(2000) // 模拟2秒延迟
+
     promise.resolve(a + b)
   }
 

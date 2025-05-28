@@ -8,16 +8,17 @@ import com.facebook.react.module.model.ReactModuleInfoProvider
 
 class MpaasPackage : BaseReactPackage() {
  override fun getModule(name: String, reactContext: ReactApplicationContext): NativeModule? =
-   when (name) {
-        MpaasScanModule.NAME -> MpaasScanModule(reactContext)
-        else -> null
+    if (name == MpaasModule.NAME) {
+        MpaasModule(reactContext)
+    } else {
+        null
     }
 
  override fun getReactModuleInfoProvider() = ReactModuleInfoProvider {
    mapOf(
-     MpaasScanModule.NAME to ReactModuleInfo(
-      MpaasScanModule.NAME,
-       MpaasScanModule.NAME,
+     MpaasModule.NAME to ReactModuleInfo(
+      MpaasModule.NAME,
+       MpaasModule.NAME,
        false, // canOverrideExistingModule
        false, // needsEagerInit
        false, // isCxxModule
