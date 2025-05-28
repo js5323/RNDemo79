@@ -2,6 +2,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <meta-data android:name="nebula.android.meta.enable" android:value="true"/>
+    <meta-data android:name="UCSDKAppKey" android:value="SHA1: 14:68:D2:37:7C:8D:1C:7D:90:BC:42:90:AD:AB:B4:C9:E2:F2:72:13"/>
+
+
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
