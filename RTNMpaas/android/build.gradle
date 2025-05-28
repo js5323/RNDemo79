@@ -15,6 +15,7 @@ buildscript {
 apply plugin: 'com.android.library'
 apply plugin: 'com.facebook.react'
 apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'com.alipay.apollo.baseline.config'
 
 android {
   compileSdkVersion safeExtGet('compileSdkVersion', 33)
@@ -27,5 +28,7 @@ repositories {
 }
 
 dependencies {
+  implementation platform("com.mpaas.android:$mpaas_artifact:$mpaas_baseline")
   implementation 'com.facebook.react:react-native'
+  implementation 'com.mpaas.android:scan'
 }
